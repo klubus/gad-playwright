@@ -25,4 +25,24 @@ test.describe("Finding different elements with getBy methods", () => {
     const resultElementLocator = page.getByTestId(resultId);
     await expect(resultElementLocator).toHaveText(expectedMessage);
   });
+
+  test("Finding checkbox element", async ({ page }) => {
+    const elementLocatorByTestId = page.getByTestId("dti-checkbox");
+    const elementLocatorByRole = page.getByRole("checkbox");
+
+    const elementSelectorId = "#id-checkbox";
+    const elementLocatorById = page.locator(elementSelectorId);
+
+    const elementSelectorAttribute = "//*[@ckbx='val1']";
+    const elementLocatorByAttribute = page.locator(elementSelectorAttribute);
+
+    const elementSelectorClass = ".my-checkbox";
+    const elementLocatorByClass = page.locator(elementSelectorClass);
+
+    await expect(elementLocatorByTestId).toBeVisible();
+    await expect(elementLocatorByRole).toBeVisible();
+    await expect(elementLocatorById).toBeVisible();
+    await expect(elementLocatorByAttribute).toBeVisible();
+    await expect(elementLocatorByClass).toBeVisible();
+  });
 });
