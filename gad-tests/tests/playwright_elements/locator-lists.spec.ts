@@ -49,4 +49,33 @@ test.describe("Locator lists", () => {
 
     // TODO: add assert
   });
+
+  test("mark all checkboxes", async ({ page }) => {
+    // Arrange
+    const elementRole = "checkbox";
+    const resultsTestId = "dti-results";
+    const expectedElementsCount = 5;
+    const expectedMessages = {
+      0: "Checkbox is checked! (Opt 1!)",
+      1: "Checkbox is checked! (Opt 2!)",
+      2: "Checkbox is checked! (Opt 3!)",
+      3: "Checkbox is checked! (Opt 4!)",
+      4: "Checkbox is checked! (Opt 5!)",
+    };
+    const resultLocator = page.getByTestId(resultsTestId);
+    const buttonLocator = page.getByRole(elementRole);
+
+    // Act
+    await expect(buttonLocator).toHaveCount(expectedElementsCount);
+
+    // Act & Assert
+    let numberofFoundCheckboxes = await buttonLocator.count();
+    for (let i = 0; i < numberofFoundCheckboxes; i++) {
+      await buttonLocator.nth(i).check();
+      console.log(await resultLocator.innerText());
+
+      // Assert
+      await expect(resultLocator).toHaveText(expectedMessages[i]);
+    }
+  });
 });
