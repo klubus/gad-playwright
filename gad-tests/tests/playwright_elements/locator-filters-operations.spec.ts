@@ -78,4 +78,42 @@ test.describe("Locator filters", () => {
     // Assert
     await expect(resultsLocator).toHaveText(expectedMessage);
   });
+
+  test("Make reservation", async ({ page }) => {
+    // Arrange
+    await page.goto("/practice/simple-reservation-v1.html");
+    const elementCheckbox = "checkbox";
+    const elementButton = "button";
+    const parentRole = "row";
+    const parentFoodText = "Food";
+    const parentReserveText = "23.10.2024";
+    const resultTestId = "dti-results-container";
+    const expectedMessage =
+      "Reservation for 23.10.2024 with features: Food for total price: 150$";
+    const checkoutButtonText = "Checkout";
+
+    const buttonFoodLocator = page
+      .getByRole(parentRole)
+      .filter({ has: page.getByText(parentFoodText) })
+      .getByRole(elementCheckbox);
+
+    const buttonReserveLocator = page
+      .getByRole(parentRole)
+      .filter({ has: page.getByText(parentReserveText) })
+      .getByRole(elementButton);
+
+    const buttonCheckout = page
+      .getByRole(elementButton)
+      .filter({ has: page.getByText(checkoutButtonText) });
+
+    const resultsLocator = page.getByTestId(resultTestId);
+
+    // Act
+    await buttonFoodLocator.click();
+    await buttonReserveLocator.click();
+    await buttonCheckout.click();
+
+    // Assert
+    await expect(resultsLocator).toHaveText(expectedMessage);
+  });
 });
