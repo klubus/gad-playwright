@@ -69,7 +69,7 @@ test.describe("Locator lists", () => {
     await expect(buttonLocator).toHaveCount(expectedElementsCount);
 
     // Act & Assert
-    let numberofFoundCheckboxes = await buttonLocator.count();
+    const numberofFoundCheckboxes = await buttonLocator.count();
     for (let i = 0; i < numberofFoundCheckboxes; i++) {
       await buttonLocator.nth(i).check();
       console.log(await resultLocator.innerText());

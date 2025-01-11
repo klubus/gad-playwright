@@ -26,7 +26,7 @@ export const expect = baseExpect.extend({
   toBeValidPercentInRange(
     actualValue: string,
     min: number,
-    max: number
+    max: number,
   ): MatcherReturnType {
     const assertionName = "toBeValidPercentInRange";
     let messageStr: string;
@@ -51,7 +51,7 @@ export const expect = baseExpect.extend({
   toBeValidPercentageWithParams(
     actualValue: string,
     min = 0,
-    max = 100
+    max = 100,
   ): MatcherReturnType {
     let message = "";
     let pass = false;
