@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint . --max-warnings=0",
+    "test": "npx playwright test",
+    "test:headed": "npm run test -- --headed",
+    "test:ui": "npm run test -- --ui",
+    "show-report": "npx playwright show-report",
+    "format:check": "npx prettier . --check \"!**.ts\"",
     "prepare": "husky"
   },
   "keywords": [],
