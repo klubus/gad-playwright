@@ -1,10 +1,11 @@
-import { test } from "@playwright/test";
-import { expect } from "./percentage.expect";
-test.describe("Weather forecast tests - humidity", () => {
-  test("humidity valid format", async ({ page }) => {
-    await page.goto("/practice/simple-weather-forecast.html");
+import { expect } from './percentage.expect';
+import { test } from '@playwright/test';
+
+test.describe('Weather forecast tests - humidity', () => {
+  test('humidity valid format', async ({ page }) => {
+    await page.goto('/practice/simple-weather-forecast.html');
     // Arrange:
-    const todayHumidityTestId = "dti-humidity-today";
+    const todayHumidityTestId = 'dti-humidity-today';
     const todayHumidityLocator = page.getByTestId(todayHumidityTestId);
 
     // Act:
@@ -16,10 +17,10 @@ test.describe("Weather forecast tests - humidity", () => {
     await expect(todayHumidityLocatorValue).toBeValidPercentInRange(0, 100);
   });
 
-  test("humidity valid format with percentage", async ({ page }) => {
-    await page.goto("/practice/simple-weather-forecast.html");
+  test('humidity valid format with percentage', async ({ page }) => {
+    await page.goto('/practice/simple-weather-forecast.html');
     // Arrange:
-    const todayHumidityTestId = "dti-humidity-today";
+    const todayHumidityTestId = 'dti-humidity-today';
     const todayHumidityLocator = page.getByTestId(todayHumidityTestId);
 
     // Act:

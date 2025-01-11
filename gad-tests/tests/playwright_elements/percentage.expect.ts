@@ -1,17 +1,17 @@
-import { expect as baseExpect, MatcherReturnType } from "@playwright/test";
+import { MatcherReturnType, expect as baseExpect } from '@playwright/test';
 
 export const expect = baseExpect.extend({
   toBeValidPercent(actualValue: string): MatcherReturnType {
-    const assertionName = "toBeValidPercent";
+    const assertionName = 'toBeValidPercent';
     let messageStr: string;
 
-    const hasPercentSign = actualValue.includes("%");
+    const hasPercentSign = actualValue.includes('%');
 
-    const percentValue = parseInt(actualValue.replace("%", ""));
+    const percentValue = parseInt(actualValue.replace('%', ''));
     const isValid = percentValue >= 0 && percentValue <= 100;
 
     if (isValid && hasPercentSign) {
-      messageStr = "passed";
+      messageStr = 'passed';
     } else {
       messageStr = `toBeValidPercent() assertion failed.\nYou expected ${actualValue} to be a valid percent value (0-100) with a '%' sign\n`;
     }
@@ -28,16 +28,16 @@ export const expect = baseExpect.extend({
     min: number,
     max: number,
   ): MatcherReturnType {
-    const assertionName = "toBeValidPercentInRange";
+    const assertionName = 'toBeValidPercentInRange';
     let messageStr: string;
 
-    const hasPercentSign = actualValue.includes("%");
+    const hasPercentSign = actualValue.includes('%');
 
-    const percentValue = parseInt(actualValue.replace("%", ""));
+    const percentValue = parseInt(actualValue.replace('%', ''));
     const isValid = percentValue >= min && percentValue <= max;
 
     if (isValid && hasPercentSign) {
-      messageStr = "passed";
+      messageStr = 'passed';
     } else {
       messageStr = `toBeValidPercentInRange() assertion failed.\nYou expected ${actualValue} to be a valid percent value in range [${min}, ${max}] with a '%' sign\n`;
     }
@@ -53,15 +53,15 @@ export const expect = baseExpect.extend({
     min = 0,
     max = 100,
   ): MatcherReturnType {
-    let message = "";
+    let message = '';
     let pass = false;
 
-    const hasPercentSign = actualValue.includes("%");
+    const hasPercentSign = actualValue.includes('%');
     const percentValue = parseInt(actualValue);
     const isValid = percentValue >= min && percentValue <= max;
 
     if (hasPercentSign === true && isValid === true) {
-      message = "passed";
+      message = 'passed';
       pass = true;
     } else {
       message = `toBeValidPercent() assertion failed.\n
