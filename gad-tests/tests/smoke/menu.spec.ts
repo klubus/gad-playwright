@@ -1,4 +1,3 @@
-import { MainMenuComponent } from '../../components/main-menu.component';
 import { ArticlesPage } from '../../src/pages/articles.page';
 import { CommentsPage } from '../../src/pages/comments.page';
 import { HomePage } from '../../src/pages/home.page';
